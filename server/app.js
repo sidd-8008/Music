@@ -5,7 +5,7 @@ var request = require('request');
 var querystring = require('querystring');
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-require("dotenv").config();
+require("dotenv").config({path: '../.env'});
 
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/user");

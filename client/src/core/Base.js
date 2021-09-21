@@ -13,7 +13,6 @@ const Base = ({
 			<div className="content" data-barba="container">
 				{children}
 			</div>
-			<Footer />
 		</div>
 	);
 };
