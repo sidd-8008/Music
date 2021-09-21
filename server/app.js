@@ -53,23 +53,24 @@ const client_secret = process.env.SPOTIFY_CLIENT_SECRET; // Your secret
 access_token='';
 
 function authSpotifyApi() {
-	access_token = 'BQDi3HJB4eS6Zn62BJiVzwNUIJlT3M0aNP6U1qlf7M9PCXAQxm6RI1LBMmmn7l9mySKBnJaJZyWq1IVa0KY';
+	// access_token = 'BQBTD4Nd8dbavVg0XRSK7w-6Fp8cLi8o42woIvAB5aWVrjoR0NazMJv-eE7wYVZ3Q21Uw1Wv_-FapDC_B1U';
 	/* 
 		The access token expires after 1 hour. Uncomment the code below to request a new token (gets logged in the console).
 		Replcae the token value with the `access_token` variable above and comment the code below again to prevent spams for 
 		access token request to Spotify API if you are using hot-reload
 	*/
-	// let options = {
-	// 	url: 'https://accounts.spotify.com/api/token',
-	// 	form: {
-	// 		grant_type: 'client_credentials'
-	// 	},
-	// 	headers: {
-	// 		'Content-Type': 'application/x-www-form-urlencoded',
-	// 		'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
-	// 	}
-	// }
-	// request.post(options, (err, res, body) => {
-	// console.log(JSON.parse(body).access_token);
-	// });
+	let options = {
+		url: 'https://accounts.spotify.com/api/token',
+		form: {
+			grant_type: 'client_credentials'
+		},
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Authorization': 'Basic ' + (new Buffer.from(client_id + ':' + client_secret).toString('base64'))
+		}
+	}
+	request.post(options, (err, res, body) => {
+		// console.log(res.data)
+		access_token = JSON.parse(body).access_token;
+	});
 };
